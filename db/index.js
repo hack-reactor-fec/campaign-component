@@ -3,54 +3,34 @@ mongoose.connect('mongodb://localhost/kickstarter');
 
 const Schema = mongoose.Schema;
 
-let levelSchema = new Schema({
+let projectSchema = new Schema({
 	'id': {
 		type: Number, 
 		unique: true
 	},
-	'productId': Number,
-	'cutoffAmount': Number,
-	'name': String,
-	'description': String,
-	'includes': [String],
-	'estimatedDelivery': Date,
-	'shipsTo': String,
-	'numberBackers': Number
-});
+	'levels': [{'cutoffAmount': Number, 'name': String, 'description': String, 'includes': [String], 'estimatedDelivery': Date, 'shipsTo': String, 'numberOfBackers': Number, 'maxBackers': Number}],
+	'aboutInfo': String
+})
 
 let userSchema = new Schema({
 	'username': {
 		type: String, 
 		unique: true
 	},
-	'productsBacked': [{'productId': Number, 'amount': Number}]
+	'projectsBacked': [{'projectId': Number, 'amount': Number}]
 });
 
-let Level = mongoose.model('Level', levelSchema);
+let Project = mongoose.model('Project', projectSchema);
 let User = mongoose.model('User', userSchema);
 
-let saveUser = (user) => {
-	return new Promise((resolve, reject) => {
-		let userData = new User(user);
-		userData.save(err => {
-			if (err) {
-				console.log('ERROR in saveUser', err);
-				reject(err);
-			} else {
-				resolve(1);
-			}
-		});
-	})
-}
-
-let saveLevels = (levels) => {
+let saveProjects = (projects) => {
 	var promiseArray = [];
-	for (let i = 0; i < levels.length; i++) {
+	for (let i = 0; i < projects.length; i++) {
 		promiseArray.push(new Promise((resolve, reject) => {
-			let levelData = new Level(levels[i]);
-			levelData.save(err => {
+			let projectData = new Project(projects[i]);
+			projectData.save(err => {
 				if (err) {
-					console.log('ERROR in saveLevels', err);
+					console.log('ERROR in saveProjects', err);
 					reject(err);
 				} else {
 					resolve(1);
@@ -61,22 +41,85 @@ let saveLevels = (levels) => {
 	return Promise.all(promiseArray);
 }
 
-let getLevels = (productId) => {
-	return new Promise((resolve, reject) => {
+let saveUserNewBackedProjects = (user) => {
+	// might want to consider adjusting to allow user to upgrade (or downgrade) pledge amount
+	let username = user.username;
+	getUser(username)
+	.then(userData => {
+		userData = JSON.parse(userData);
+		let projectsBacked = userData.projectsBacked;
+		projectsBacked.push({'projectId': user.projectId, 'amount': user.amount});
 		let query = {};
-		query['id'] = productId;
-		Level.find(query).
-		sort({cutoffAmount: 1}).
-		exec((err, levels) => {
+		query['username'] = username;
+		let updatedValue = {}
+		updatedValue['projectsBacked'] = projectsBacked;
+		User.findOneAndUpdate(query, updatedValue)
+		.exec((err, user) => {
 			if (err) {
 				reject(err);
 			} else {
-				resolve(levels);
+				resolve(1);
 			}
-		})
+		});
 	});
 }
 
-module.exports.saveUser = saveUser;
-module.exports.saveLevels = saveLevels;
+let getUser = (username) => {
+	return new Promise((resolve, reject) => {
+		let query = {};
+		query['username'] = username;
+		User.find(query)
+		.exec((err, user) => {
+			if (err) {
+				reject(err);
+			} else {
+				resolve(JSON.stringify(user));
+			}
+		});
+	});
+}
+
+let saveUsers = (users) => {
+	var promiseArray = [];
+	for (let i = 0; i < users.length; i++) {
+		promiseArray.push(new Promise((resolve, reject) => {
+			let userData = new User(users[i]);
+			userData.save(err => {
+				if (err) {
+					console.log('ERROR in saveUsers', err);
+					reject(err);
+				} else {
+					resolve(1);
+				}
+			});
+		}));
+	}
+	return Promise.all(promiseArray);
+}
+
+let getLevels = (projectId) => {
+	return new Promise((resolve, reject) => {
+		projectId = Number(projectId);
+		var query = {};
+		query['id'] = projectId;
+		Project.find(query).
+		exec((err, project) => {
+			if (err) {
+				reject(err);
+			} else {
+				console.log('project', project);
+				let levels = project[0]['levels'];
+				console.log('levels', levels);
+				levels.sort(function(a,b) {
+					return (a.cutoffAmount > b.cutoffAmount) ? 1 : ((b.cutoffAmount > a.cutoffAmount) ? -1 : 0);
+				}); 				
+				resolve(JSON.stringify(levels));
+			}
+		});
+	});
+}
+
+module.exports.saveUsers = saveUsers;
+module.exports.saveProjects = saveProjects;
 module.exports.getLevels = getLevels;
+module.exports.saveUserNewBackedProjects = saveUserNewBackedProjects;
