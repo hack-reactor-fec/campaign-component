@@ -2,17 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import SingleCurrentLevel from './SingleCurrentLevel.jsx';
 
-// may have to add level id
-// 	'levels': [{'cutoffAmount': Number, 
-				// 'name': String, 
-				// 'description': String, 
-				// 'includes': [String], 
-				// 'estimatedDelivery': Date, 
-				// 'shipsTo': String, 
-				// 'numberOfBackers': Number, 
-				// 'maxBackers': Number}],
-
-
 class CurrentLevels extends React.component {
 	constructor(props){
 		super(props);
@@ -37,13 +26,15 @@ class CurrentLevels extends React.component {
 
 	render() {
 		return (
-			{this.props.levels.map(level => {
-				if (currentLevels.filter(currentLevel => currentLevel.name === level.name).length > 0) {
-					return <SingleCurrentLevel level={level} levelType="current" />
-				} else {
-					return <SingleCurrentLevel level={level} levelType="limited" />
-				}
-			})}
+			<div className="current-level-container">
+				{this.props.levels.map(level => {
+					if (currentLevels.filter(currentLevel => currentLevel.name === level.name).length > 0) {
+						return <SingleCurrentLevel level={level} levelType="current" />
+					} else {
+						return <SingleCurrentLevel level={level} levelType="limited" />
+					}
+				})}
+			</div>
 		)
 	}
 }

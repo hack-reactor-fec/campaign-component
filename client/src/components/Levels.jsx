@@ -3,16 +3,6 @@ import ReactDOM from 'react-dom';
 import CurrentLevels from './CurrentLevels.jsx';
 import FullLevels from './FullLevels.jsx';
 
-// 	'levels': [{'cutoffAmount': Number, 
-				// 'name': String, 
-				// 'description': String, 
-				// 'includes': [String], 
-				// 'estimatedDelivery': Date, 
-				// 'shipsTo': String, 
-				// 'numberOfBackers': Number, 
-				// 'maxBackers': Number}],
-
-
 class Levels extends React.component {
 	constructor(props){
 		super(props);

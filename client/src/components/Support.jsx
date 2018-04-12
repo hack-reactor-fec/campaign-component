@@ -24,7 +24,7 @@ class Support extends React.component {
 	render() {
 		return (
 			<h1 id="Support" className="section-header">Support</h1>
-			<PledgeBox projectId={this.props.projectId}/>
+			<PledgeBox projectId={this.props.projectId} />
 			<Levels levels={this.state.levels} />
 		)
 	}

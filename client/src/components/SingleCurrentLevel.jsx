@@ -1,16 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import moment from 'moment';
 import LevelBackersSection from './LevelBackersSection.jsx';
-
-// 	'levels': [{'cutoffAmount': Number, 
-				// 'name': String, 
-				// 'description': String, 
-				// 'includes': [String], 
-				// 'estimatedDelivery': Date, 
-				// 'shipsTo': String, 
-				// 'numberOfBackers': Number, 
-				// 'maxBackers': Number}],
-
 
 class SingleCurrentLevel extends React.component {
 	constructor(props){
@@ -35,7 +26,7 @@ class SingleCurrentLevel extends React.component {
 				</div>
 				<div className="level-delivery-date-section">
 					<h4 className="level-additional-info-header">ESTIMATED DELIVERY</h4>
-					<div className="level-additional-info-item">{this.props.level.estimatedDelivery}</div>
+					<div className="level-additional-info-item">{moment(this.props.level.estimatedDelivery).format('MMM YYYY')}</div>
 				</div>
 				<div className="level-delivery-region-section">
 					<h4 className="level-additional-info-header">SHIPS TO</h4>
