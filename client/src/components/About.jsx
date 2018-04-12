@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-class About extends React.component {
+class About extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
@@ -13,7 +13,7 @@ class About extends React.component {
 	componentDidMount() {
 		axios.get(`/about/${this.props.projectId}`)
 		.then(result => {
-			this.setState({aboutInfo: result});
+			this.setState({aboutInfo: result.data});
 		})
 		.catch(err => {
 			console.log('ERROR', err);

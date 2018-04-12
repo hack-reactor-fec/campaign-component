@@ -3,16 +3,18 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import axios from 'axios';
 
-class PledgeBox extends React.component {
+class PledgeBox extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
 			amount: '',
 		}
+		this.handleChange = this.handleChange.bind(this);
+		this.handleContinueButtonClick = this.handleContinueButtonClick.bind(this);
 	}
 
 	handleChange(e) {
-		this.setState({amount: e.target.value})
+		this.setState({amount: e.target.value});
 	}
 
 	handleInputTextClick(e) {
@@ -22,11 +24,11 @@ class PledgeBox extends React.component {
 	}
 
 	handleContinueButtonClick() {
-		let userNewBackedProject = {}
+		let userNewBackedProject = {};
 		userNewBackedProject.username = this.props.username;
 		userNewBackedProject.projectId = this.props.projectId;
 		userNewBackedProject.amount = $('#pledge-amount-chosen').val();
-		axios.post('/users', JSON.stringify(userNewBackedProject))
+		axios.post('/users', userNewBackedProject)
 		.then(response => {
 			// what actually happens, is there a thank you message?
 			$('#pledge-amount-chosen').val('');

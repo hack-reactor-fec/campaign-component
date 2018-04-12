@@ -5,7 +5,7 @@ import $ from 'jquery';
 import About from './components/About.jsx';
 import Support from './components/Support.jsx';
 
-class App extends React.component {
+class App extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -18,15 +18,15 @@ class App extends React.component {
 		return (
 			<div id="app-container">
 				<About projectId={this.state.projectId} />
-				<Support projectId={this.state.projectId} />
+				<Support projectId={this.state.projectId} username={this.state.username} />
 			</div>
 		)
 	}
 }
 
-// for now use project 99 and user Audrey28
+// for now use project 3 and user Saige99
 $(document).ready(function() {
-	ReactDOM.render(<App projectId="99" username="Audrey28"/>, document.getElementById('container'));
+	ReactDOM.render(<App projectId="3" username="Saige99"/>, document.getElementById('container'));
 });
 
 export default App;

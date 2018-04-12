@@ -45,7 +45,7 @@ app.get('/about/:projectId', (req, res) => {
 });
 
 app.post('/users', (req, res) => {
-	let userNewProject = JSON.parse(req.body);
+	let userNewProject = req.body;
 	saveUserNewBackedProjects(userNewProject)
 	.then(result => {
 		res.writeHead(201);

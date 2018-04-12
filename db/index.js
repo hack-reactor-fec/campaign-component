@@ -43,37 +43,39 @@ let saveProjects = (projects) => {
 
 let saveUserNewBackedProjects = (user) => {
 	// might want to consider adjusting to allow user to upgrade (or downgrade) pledge amount
-	let username = user.username;
-	getUser(username)
-	.then(userData => {
-		userData = JSON.parse(userData);
-		let projectsBacked = userData.projectsBacked;
-		projectsBacked.push({'projectId': user.projectId, 'amount': user.amount});
-		let query = {};
-		query['username'] = username;
-		let updatedValue = {};
-		updatedValue['projectsBacked'] = projectsBacked;
-		User.findOneAndUpdate(query, updatedValue)
-		.exec((err, user) => {
-			if (err) {
-				reject(err);
-			} else {
-				resolve(1);
-			}
+	return new Promise((resolve, reject) => {
+		var username = user.username;
+		getUser(username)
+		.then(userData => {
+			userData = JSON.parse(userData);
+			let projectsBacked = userData.projectsBacked;
+			projectsBacked.push({'projectId': user.projectId, 'amount': user.amount});
+			let query = {};
+			query['username'] = username;
+			let updatedValue = {};
+			updatedValue['projectsBacked'] = projectsBacked;
+			User.findOneAndUpdate(query, updatedValue)
+			.exec((err, user) => {
+				if (err) {
+					reject(err);
+				} else {
+					resolve(1);
+				}
+			});
 		});
 	});
 }
 
-let getUser = (username) => {
+var getUser = (username) => {
 	return new Promise((resolve, reject) => {
-		let query = {};
+		var query = {};
 		query['username'] = username;
 		User.find(query)
 		.exec((err, user) => {
 			if (err) {
 				reject(err);
 			} else {
-				resolve(JSON.stringify(user));
+				resolve(JSON.stringify(user[0]));
 			}
 		});
 	});
