@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Levels from './Level.jsx';
+import Levels from './Levels.jsx';
 import PledgeBox from './PledgeBox.jsx';
 
 class Support extends React.component {
@@ -23,9 +23,13 @@ class Support extends React.component {
 
 	render() {
 		return (
-			<h1 id="Support" className="section-header">Support</h1>
-			<PledgeBox projectId={this.props.projectId} />
-			<Levels levels={this.state.levels} />
+			<div id="support-container">
+				<h1 id="support-header" className="section-header">Support</h1>
+				<div id="support-components-container">
+						<PledgeBox projectId={this.props.projectId} username={this.props.username} />
+						<Levels levels={this.state.levels} />
+				</div>
+			</div>
 		)
 	}
 }

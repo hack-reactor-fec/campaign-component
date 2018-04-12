@@ -13,7 +13,7 @@ class FullLevels extends React.component {
 
 	render() {
 		return (
-			<div className="full-level-container">
+			<div id="full-levels-container">
 				{this.props.levels.map(level => {
 					return (
 						<div className="full-level">

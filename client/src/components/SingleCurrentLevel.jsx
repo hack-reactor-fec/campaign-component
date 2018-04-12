@@ -14,7 +14,7 @@ class SingleCurrentLevel extends React.component {
 
 	render() {
 		return (
-			<div className="current-level">
+			<div className="single-current-level-container">
 				<h2 className="level-pledge-amount">Pledge $${this.props.level.cutoffAmount} or more</h2>
 				<h3 className="level-name">{this.props.level.name}</h3>
 				<p className="level-description">{this.props.level.description}</p>

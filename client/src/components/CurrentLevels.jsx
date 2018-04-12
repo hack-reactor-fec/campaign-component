@@ -26,12 +26,12 @@ class CurrentLevels extends React.component {
 
 	render() {
 		return (
-			<div className="current-level-container">
+			<div id="current-levels-container">
 				{this.props.levels.map(level => {
 					if (currentLevels.filter(currentLevel => currentLevel.name === level.name).length > 0) {
-						return <SingleCurrentLevel level={level} levelType="current" />
+						return <div className="single-current-level"><SingleCurrentLevel level={level} levelType="current" /></div>
 					} else {
-						return <SingleCurrentLevel level={level} levelType="limited" />
+						return <div className="single-limited-level"><SingleCurrentLevel level={level} levelType="limited" /></div>
 					}
 				})}
 			</div>

@@ -51,7 +51,7 @@ let saveUserNewBackedProjects = (user) => {
 		projectsBacked.push({'projectId': user.projectId, 'amount': user.amount});
 		let query = {};
 		query['username'] = username;
-		let updatedValue = {}
+		let updatedValue = {};
 		updatedValue['projectsBacked'] = projectsBacked;
 		User.findOneAndUpdate(query, updatedValue)
 		.exec((err, user) => {

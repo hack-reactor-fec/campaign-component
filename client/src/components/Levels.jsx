@@ -27,7 +27,7 @@ class Levels extends React.component {
 
 	render() {
 		return (
-			<div className="levels">
+			<div id="all-levels-container">
 				<CurrentLevels levels={this.state.currentLevels}/>
 				<FullLevels levels={this.state.fullLevels}/>
 			</div>
