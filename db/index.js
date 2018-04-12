@@ -119,7 +119,25 @@ let getLevels = (projectId) => {
 	});
 }
 
+let getAboutInfo = (projectId) => {
+	return new Promise((resolve, reject) => {
+		projectId = Number(projectId);
+		var query = {};
+		query['id'] = projectId;
+		Project.find(query).
+		exec((err, project) => {
+			if (err) {
+				reject(err);
+			} else {
+				let aboutInfo = project[0]['aboutInfo'];				
+				resolve(aboutInfo);
+			}
+		});
+	});
+}
+
 module.exports.saveUsers = saveUsers;
 module.exports.saveProjects = saveProjects;
 module.exports.getLevels = getLevels;
+module.exports.getAboutInfo = getAboutInfo;
 module.exports.saveUserNewBackedProjects = saveUserNewBackedProjects;

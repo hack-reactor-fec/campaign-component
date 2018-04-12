@@ -3,6 +3,7 @@ const parser = require('body-parser');
 const morgan = require('morgan');
 //const router = require('./routes.js');
 const getLevels = require('../db/index.js').getLevels;
+const getAboutInfo = require('../db/index.js').getAboutInfo;
 const saveUserNewBackedProjects = require('../db/index.js').saveUserNewBackedProjects;
 
 var app = express();
@@ -25,6 +26,19 @@ app.get('/levels/:projectId', (req, res) => {
 	})
 	.catch(err => {
 		console.log('ERROR in get /levels', err);
+		res.writeHead(404);
+		res.end('');
+	});
+});
+
+app.get('/about/:projectId', (req, res) => {
+	getAboutInfo(req.params.projectId)
+	.then(results => {
+		res.writeHead(200);
+		res.end(results);
+	})
+	.catch(err => {
+		console.log('ERROR in get /about', err);
 		res.writeHead(404);
 		res.end('');
 	});

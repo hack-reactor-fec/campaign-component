@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/hack-reactor-fec/campaign-module#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "faker": "^4.1.0",
