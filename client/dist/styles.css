@@ -11,6 +11,12 @@
   color: #282828;
 }
 
+.full-backers-line {
+  font-size: 12px;
+  font-weight: 700;
+  color: #282828;
+}
+
 #app-container {
   display: flex;
 }
