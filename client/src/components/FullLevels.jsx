@@ -6,6 +6,7 @@ import LevelBackersSection from './LevelBackersSection.jsx';
 function FullLevels(props) {
 	return (
 		<div id="full-levels-container">
+			<h1 id="all-gone">All gone!</h1>
 			{props.fullLevels.map(level => {
 				return (
 					<div className="full-level">

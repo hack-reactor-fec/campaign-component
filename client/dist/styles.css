@@ -5,6 +5,12 @@
   border: 1px solid black;
 }
 
+#all-gone {
+  font-size: 24px;
+  font-weight: 700;
+  color: #282828;
+}
+
 #app-container {
   display: flex;
 }
