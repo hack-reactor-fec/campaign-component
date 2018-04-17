@@ -1,0 +1,150 @@
+$font-stack: Karla, Helvetica, Arial;
+$primary-color: rgb(40, 40, 40);
+$level-text-color: rgb(101, 105, 105);
+$additional-info-text-color: rgb(2, 6, 33);
+$helper-border: 1px solid black;
+$level-left-padding: 15px;
+
+.section-header {
+	font-family: $font-stack;
+	color: $primary-color;
+	font-size: 24px;
+	border: $helper-border;
+}
+
+#app-container {
+	display: flex;
+}
+
+#about-master-container {
+	flex: 61;
+	display: flex;
+	justify-content: flex-end;
+	border: $helper-border;
+	margin-right: 20px;
+}
+
+#about-container {
+	position: relative;
+	width: 65%;
+}
+
+#support-master-container {
+	flex: 39;
+	display: flex;
+	justify-content: flex-start;
+	border: $helper-border;
+	margin-left: 20px;
+}
+
+#support-container {
+	position: relative;
+	width: 50%;
+}
+
+.support-components-subcontainer {
+	border: $helper-border;
+	padding-left: $level-left-padding;
+}
+
+.single-current-level-subcontainer {
+	border: $helper-border;
+	padding-left: $level-left-padding;
+}
+
+.full-level-subcontainer {
+	border: $helper-border;
+	padding-left: $level-left-padding;
+}
+
+#pledge-component-subcontainer {
+	border: $helper-border;
+	padding-left: $level-left-padding;
+}
+
+#pledge-component-container {
+	border: $helper-border;
+}
+
+#pledge-amount-container {
+	border: $helper-border;
+}
+
+#pledge-amount-currency-symbol {
+	border: $helper-border;
+}
+
+#pledge-amount-chosen {
+	border: $helper-border;
+}
+
+.single-current-level-container {
+	border: $helper-border;
+}
+
+.full-level {
+	border: $helper-border;
+}
+
+.level-pledge-amount {
+	border: $helper-border;
+	font-size: 18px;
+	font-weight: 400;
+}
+
+.level-name {
+	border: $helper-border;
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.level-description {
+	border: $helper-border;
+	font-size: 14px;
+	color: $level-text-color;
+}
+
+.level-additional-info-header {
+	border: $helper-border;
+	font-size: 10px;
+	font-weight: 500;
+}
+
+.includes-list-item {
+	border: $helper-border;
+	font-size: 14px;
+	font-weight: 400;
+	color: $additional-info-text-color;
+}
+
+.level-delivery-date-section {
+	border: $helper-border;
+}
+
+.level-delivery-region-section {
+	border: $helper-border;
+}
+
+.level-additional-info-item {
+	border: $helper-border;
+	font-size: 14px;
+	font-weight: 400;
+	color: $additional-info-text-color;
+}
+
+.backers-line {
+	font-size: 14px;
+	font-weight: 400;
+	color: $level-text-color;
+}
+
+.limited-backers-line {
+	font-size: 12px;
+	font-weight: 500;
+	color: rgb(255, 81, 81);
+}
+
+
+
+
+

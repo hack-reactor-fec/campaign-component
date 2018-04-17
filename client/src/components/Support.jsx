@@ -19,11 +19,11 @@ class Support extends React.Component {
 	componentDidMount() {
 		axios.get(`/levels/${this.props.projectId}`)
 		.then(results => {
-			var levels = results.data;
-			var updatedAllCurrentLevels = [];
-			var updatedCurrentLevels = [];
-			var updatedLimitedLevels = [];
-			var updatedFullLevels = [];
+			let levels = results.data;
+			let updatedAllCurrentLevels = [];
+			let updatedCurrentLevels = [];
+			let updatedLimitedLevels = [];
+			let updatedFullLevels = [];
 			for (let i = 0; i < levels.length; i++) {
 				if (levels[i].numberOfBackers === levels[i].maxBackers) {
 					updatedFullLevels.push(levels[i]);
@@ -45,11 +45,13 @@ class Support extends React.Component {
 
 	render() {
 		return (
-			<div id="support-container">
-				<h1 id="support-header" className="section-header">Support</h1>
-				<div id="support-components-container">
-						<PledgeBox projectId={this.props.projectId} username={this.props.username} />
-						<Levels allCurrentLevels={this.state.allCurrentLevels} currentLevels={this.state.currentLevels} limitedLevels={this.state.limitedLevels} fullLevels={this.state.fullLevels} />
+			<div id="support-master-container">
+				<div id="support-container">
+					<h1 id="support-header" className="section-header">Support</h1>
+					<div id="support-components-container">
+							<PledgeBox projectId={this.props.projectId} username={this.props.username} />
+							<Levels allCurrentLevels={this.state.allCurrentLevels} currentLevels={this.state.currentLevels} limitedLevels={this.state.limitedLevels} fullLevels={this.state.fullLevels} />
+					</div>
 				</div>
 			</div>
 		)

@@ -41,12 +41,14 @@ class PledgeBox extends React.Component {
 	render() {
 		return (
 			<div id="pledge-component-container">
-				<div id="pledge-header">Make a pledge without a reward</div>
-				<div id="pledge-amount-container">
-					<span className="pledge-amount-currency-symbol">$</span>
-					<span><input type="text" id="pledge-amount-chosen" placeholder="Pledge any amount" onChange={this.handleChange} onClick={this.handleInputTextClick}/></span>
+				<div id="pledge-component-subcontainer">
+					<div id="pledge-header">Make a pledge without a reward</div>
+					<div id="pledge-amount-container">
+						<span id="pledge-amount-currency-symbol">$</span>
+						<span><input type="text" id="pledge-amount-chosen" placeholder="Pledge any amount" onChange={this.handleChange} onClick={this.handleInputTextClick}/></span>
+					</div>
+					<button type="button" id="continue-button" onClick={this.handleContinueButtonClick}>Continue</button>
 				</div>
-				<button type="button" id="continue-button" onClick={this.handleContinueButtonClick}>Continue</button>
 			</div>
 		)
 	}
