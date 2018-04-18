@@ -9,7 +9,7 @@ function FullLevels(props) {
 			<h1 id="all-gone">All gone!</h1>
 			{props.fullLevels.map(level => {
 				return (
-					<div className="full-level">
+					<div className="full-level support-item">
 						<div className="full-level-subcontainer">
 							<h2 className="level-pledge-amount">Pledge ${level.cutoffAmount} or more</h2>
 							<h3 className="level-name">{level.name}</h3>

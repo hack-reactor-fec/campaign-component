@@ -1,8 +1,19 @@
+input:focus {
+  outline: none;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #009e74;
+}
+
+.support-item {
+  margin-bottom: 20px;
+}
+
 .section-header {
   font-family: Karla, Helvetica, Arial;
   color: #282828;
   font-size: 24px;
-  border: 1px solid black;
+  border: 1px solid red;
 }
 
 #all-gone {
@@ -25,7 +36,7 @@
   flex: 61;
   display: flex;
   justify-content: flex-end;
-  border: 1px solid black;
+  border: 1px solid red;
   margin-right: 20px;
 }
 
@@ -38,7 +49,7 @@
   flex: 39;
   display: flex;
   justify-content: flex-start;
-  border: 1px solid black;
+  border: 1px solid red;
   margin-left: 20px;
 }
 
@@ -48,90 +59,89 @@
 }
 
 .support-components-subcontainer {
-  border: 1px solid black;
+  border: 1px solid red;
   padding-left: 15px;
 }
 
 .single-current-level-subcontainer {
-  border: 1px solid black;
+  border: 1px solid red;
   padding-left: 15px;
 }
 
 .full-level-subcontainer {
-  border: 1px solid black;
+  border: 1px solid red;
   padding-left: 15px;
 }
 
 #pledge-component-subcontainer {
-  border: 1px solid black;
+  border: 1px solid red;
   padding-left: 15px;
 }
 
 #pledge-component-container {
-  border: 1px solid black;
+  border: 1px solid red;
 }
 
-#pledge-amount-container {
-  border: 1px solid black;
+#pledge-amount-container .no-highlight {
+  border-color: #dcdedd;
+  border-width: 1px;
+  border-style: solid;
 }
-
-#pledge-amount-currency-symbol {
-  border: 1px solid black;
-}
-
-#pledge-amount-chosen {
-  border: 1px solid black;
+#pledge-amount-container .highlight {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #009e74;
 }
 
 .single-current-level-container {
-  border: 1px solid black;
+  border: 1px solid red;
 }
 
 .full-level {
-  border: 1px solid black;
+  border: 1px solid red;
 }
 
 .level-pledge-amount {
-  border: 1px solid black;
+  border: 1px solid red;
   font-size: 18px;
   font-weight: 400;
 }
 
 .level-name {
-  border: 1px solid black;
+  border: 1px solid red;
   font-size: 16px;
   font-weight: 400;
 }
 
 .level-description {
-  border: 1px solid black;
+  border: 1px solid red;
   font-size: 14px;
   color: #656969;
 }
 
 .level-additional-info-header {
-  border: 1px solid black;
+  border: 1px solid red;
   font-size: 10px;
   font-weight: 500;
 }
 
 .includes-list-item {
-  border: 1px solid black;
+  border: 1px solid red;
   font-size: 14px;
   font-weight: 400;
   color: #020621;
 }
 
 .level-delivery-date-section {
-  border: 1px solid black;
+  border: 1px solid red;
 }
 
 .level-delivery-region-section {
-  border: 1px solid black;
+  border: 1px solid red;
 }
 
 .level-additional-info-item {
-  border: 1px solid black;
+  border: 1px solid red;
   font-size: 14px;
   font-weight: 400;
   color: #020621;

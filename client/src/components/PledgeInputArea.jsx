@@ -8,14 +8,32 @@ class PledgeInputArea extends React.Component {
 		super(props);
 		this.state = {
 		}
+		this.handleClick = this.handleClick.bind(this);
+	}
+
+	componentWillMount() {
+		document.addEventListener('mousedown', this.handleClick, false);
+	}
+
+	componentWillUnmount() {
+		document.removeEventListener('mousedown', this.handleClick, false);
+	}
+
+	handleClick(e) {
+		if (this.node.contains(e.target)) {
+			return;
+		}
+		this.props.handleClickOutside();
 	}
 
 
 	render() {
 		return (
-			<div id="pledge-amount-container">
-				<span id="pledge-amount-currency-symbol" className={this.props.highlightInputArea ? 'highlight' : 'no-highlight'}>$</span>
-				<span><input type="text" id="pledge-amount-chosen" className={this.props.highlightInputArea ? 'highlight' : 'no-highlight'} placeholder="Pledge any amount" onChange={this.props.handleInputChange} onClick={this.props.handleInputTextClick}/></span>
+			<div ref={node => {this.node = node}}>
+				<div id="pledge-amount-container">
+					<span id="pledge-amount-currency-symbol" className={this.props.highlightInputArea ? 'highlight' : 'no-highlight'}>$</span>
+					<span><input type="text" id="pledge-amount-chosen" className={this.props.highlightInputArea ? 'highlight' : 'no-highlight'} placeholder="Pledge any amount" onChange={this.props.handleInputChange} onClick={this.props.handleInputTextClick}/></span>
+				</div>
 			</div>
 		)
 	}

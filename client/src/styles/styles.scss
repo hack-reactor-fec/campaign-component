@@ -2,8 +2,22 @@ $font-stack: Karla, Helvetica, Arial;
 $primary-color: rgb(40, 40, 40);
 $level-text-color: rgb(101, 105, 105);
 $additional-info-text-color: rgb(2, 6, 33);
-$helper-border: 1px solid black;
+$helper-border: 1px solid red;
 $level-left-padding: 15px;
+$border-highlight: rgb(0, 158, 116);
+$border-no-highlight: rgb(220, 222, 221);
+
+
+input:focus {
+	outline: none;
+	border-style: solid;
+	border-width: 1px;
+	border-color: $border-highlight;
+}
+
+.support-item {
+	margin-bottom: 20px;
+}
 
 .section-header {
 	font-family: $font-stack;
@@ -11,7 +25,6 @@ $level-left-padding: 15px;
 	font-size: 24px;
 	border: $helper-border;
 }
-
 #all-gone {
 	font-size: 24px;
 	font-weight: 700;
@@ -79,15 +92,18 @@ $level-left-padding: 15px;
 }
 
 #pledge-amount-container {
-	border: $helper-border;
-}
 
-#pledge-amount-currency-symbol {
-	border: $helper-border;
-}
+	.no-highlight {
+		border-color: $border-no-highlight;
+		border-width: 1px;
+		border-style: solid;
+	}
 
-#pledge-amount-chosen {
-	border: $helper-border;
+	.highlight {
+		border-style: solid;
+		border-width: 1px;
+		border-color: $border-highlight;
+	}
 }
 
 .single-current-level-container {

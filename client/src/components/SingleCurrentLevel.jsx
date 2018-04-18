@@ -5,7 +5,7 @@ import LevelBackersSection from './LevelBackersSection.jsx';
 
 function SingleCurrentLevel(props) {
 	return (
-		<div className="single-current-level-container">
+		<div className="single-current-level-container support-item">
 			<div className="single-current-level-subcontainer">
 				<h2 className="level-pledge-amount">Pledge ${props.level.cutoffAmount} or more</h2>
 				<h3 className="level-name">{props.level.name}</h3>

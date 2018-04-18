@@ -13,8 +13,13 @@ class PledgeBox extends React.Component {
 			highlightInputArea: false
 		}
 		this.handleInputChange = this.handleInputChange.bind(this);
+		this.handleClickOutside = this.handleClickOutside.bind(this);
 		this.handleContinueButtonClick = this.handleContinueButtonClick.bind(this);
 		this.handleInputTextClick = this.handleInputTextClick.bind(this);
+	}
+
+	handleClickOutside() {
+		this.setState({highlightInputArea: false});
 	}
 
 	handleInputChange(e) {
@@ -45,10 +50,10 @@ class PledgeBox extends React.Component {
 
 	render() {
 		return (
-			<div id="pledge-component-container">
+			<div id="pledge-component-container" className="support-item">
 				<div id="pledge-component-subcontainer">
 					<div id="pledge-header">Make a pledge without a reward</div>
-					<PledgeInputArea handleInputChange={this.handleInputChange} handleInputTextClick={this.handleInputTextClick}/>
+					<PledgeInputArea handleInputChange={this.handleInputChange} handleInputTextClick={this.handleInputTextClick} handleClickOutside={this.handleClickOutside} highlightInputArea={this.state.highlightInputArea}/>
 					<button type="button" id="continue-button" onClick={this.handleContinueButtonClick} className={this.state.continueButtonDisplay ? 'display-button' : 'hide-button'}>Continue</button>
 				</div>
 			</div>
