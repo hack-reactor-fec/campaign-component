@@ -2,23 +2,28 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import axios from 'axios';
+import PledgeInputArea from './PledgeInputArea.jsx';
 
 class PledgeBox extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
 			amount: '',
+			continueButtonDisplay: false,
+			highlightInputArea: false
 		}
-		this.handleChange = this.handleChange.bind(this);
+		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleContinueButtonClick = this.handleContinueButtonClick.bind(this);
+		this.handleInputTextClick = this.handleInputTextClick.bind(this);
 	}
 
-	handleChange(e) {
+	handleInputChange(e) {
 		this.setState({amount: e.target.value});
 	}
 
 	handleInputTextClick(e) {
 		// display continue button
+		this.setState({continueButtonDisplay: true, highlightInputArea: true});
 		// highlight input text area and currency div in green
 		// when user clicks out of that input text area, have to unhighlight but leave continue button
 	}
@@ -43,11 +48,8 @@ class PledgeBox extends React.Component {
 			<div id="pledge-component-container">
 				<div id="pledge-component-subcontainer">
 					<div id="pledge-header">Make a pledge without a reward</div>
-					<div id="pledge-amount-container">
-						<span id="pledge-amount-currency-symbol">$</span>
-						<span><input type="text" id="pledge-amount-chosen" placeholder="Pledge any amount" onChange={this.handleChange} onClick={this.handleInputTextClick}/></span>
-					</div>
-					<button type="button" id="continue-button" onClick={this.handleContinueButtonClick}>Continue</button>
+					<PledgeInputArea handleInputChange={this.handleInputChange} handleInputTextClick={this.handleInputTextClick}/>
+					<button type="button" id="continue-button" onClick={this.handleContinueButtonClick} className={this.state.continueButtonDisplay ? 'display-button' : 'hide-button'}>Continue</button>
 				</div>
 			</div>
 		)
