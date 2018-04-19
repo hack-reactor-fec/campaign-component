@@ -1,8 +1,36 @@
+body {
+  font-family: Karla, Helvetica, Arial;
+}
+
 input:focus {
   outline: none;
   border-style: solid;
   border-width: 1px;
   border-color: #009e74;
+}
+
+.level-extra-info-section {
+  display: flex;
+}
+
+.level-delivery-date-section {
+  flex: 1;
+}
+
+.level-delivery-region-section {
+  flex: 1;
+}
+
+.level-additional-info-header {
+  display: block;
+}
+
+.level-additional-info-item {
+  display: block;
+}
+
+#about-info {
+  padding-right: 18px;
 }
 
 .support-item {
@@ -91,6 +119,7 @@ input:focus {
   background-color: #009e74;
   color: white;
   margin-bottom: 18px;
+  font-size: 14px;
 }
 
 .pledge-flex-div {
@@ -124,7 +153,7 @@ input:focus {
 }
 #pledge-amount-container #pledge-amount-chosen {
   flex: 6;
-  font-size: 16px;
+  font-size: 14px;
   padding-left: 5px;
   color: #282828;
 }
