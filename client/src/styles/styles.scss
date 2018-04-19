@@ -6,6 +6,7 @@ $level-vertical-padding: 20px;
 $level-side-padding: 18px;
 $border-highlight: rgb(0, 158, 116);
 $border-general-grey: rgb(101, 105, 105);
+$border-input-grey: rgb(220, 222, 221);
 $border-general-width: 1px;
 $pledgebox-intra-spacing: 10px;
 $all-gone-background-color: rgb(251, 251, 250);
@@ -35,6 +36,8 @@ input:focus {
 
 .level-additional-info-header {
 	display: block;
+	font-size: 10px;
+	color: $level-text-color;
 }
 
 .level-additional-info-item {
@@ -141,6 +144,10 @@ input:focus {
 	font-size: 14px;
 }
 
+.hide-button {
+	display: none;
+}
+
 .pledge-flex-div {
 	flex: 1;
 }
@@ -182,7 +189,7 @@ input:focus {
 	}
 
 	.no-highlight {
-		border-color: $border-general-grey;
+		border-color: $border-input-grey;
 		border-width: 1px;
 		border-style: solid;
 	}

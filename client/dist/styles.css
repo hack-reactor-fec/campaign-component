@@ -23,6 +23,8 @@ input:focus {
 
 .level-additional-info-header {
   display: block;
+  font-size: 10px;
+  color: #656969;
 }
 
 .level-additional-info-item {
@@ -129,6 +131,10 @@ input:focus {
   font-size: 14px;
 }
 
+.hide-button {
+  display: none;
+}
+
 .pledge-flex-div {
   flex: 1;
 }
@@ -167,7 +173,7 @@ input:focus {
   color: #282828;
 }
 #pledge-amount-container .no-highlight {
-  border-color: #656969;
+  border-color: #dcdedd;
   border-width: 1px;
   border-style: solid;
 }
