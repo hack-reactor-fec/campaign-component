@@ -7,12 +7,12 @@ function SingleCurrentLevel(props) {
 	return (
 		<div className="single-current-level-container support-item">
 			<div className="single-current-level-subcontainer">
-				<h2 className="level-pledge-amount">Pledge ${props.level.cutoffAmount} or more</h2>
-				<h3 className="level-name">{props.level.name}</h3>
+				<div className="level-pledge-amount">Pledge ${props.level.cutoffAmount} or more</div>
+				<div className="level-name">{props.level.name}</div>
 				<p className="level-description">{props.level.description}</p>
 				<div className="level-includes-section">
-					<h4 className="level-additional-info-header">INCLUDES:</h4>
-					<ul>
+					<div className="level-additional-info-header">INCLUDES:</div>
+					<ul className="level-includes-list">
 						{props.level.includes.map(item => <li className="includes-list-item">{item}</li>)}
 					</ul>
 				</div>

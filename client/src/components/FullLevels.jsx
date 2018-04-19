@@ -6,17 +6,17 @@ import LevelBackersSection from './LevelBackersSection.jsx';
 function FullLevels(props) {
 	return (
 		<div id="full-levels-container">
-			<h1 id="all-gone">All gone!</h1>
+			<div id="all-gone">All gone!</div>
 			{props.fullLevels.map(level => {
 				return (
 					<div className="full-level support-item">
 						<div className="full-level-subcontainer">
-							<h2 className="level-pledge-amount">Pledge ${level.cutoffAmount} or more</h2>
-							<h3 className="level-name">{level.name}</h3>
+							<div className="level-pledge-amount">Pledge ${level.cutoffAmount} or more</div>
+							<div className="level-name">{level.name}</div>
 							<p className="level-description">{level.description}</p>
 							<div className="level-includes-section">
-								<h4 className="level-additional-info-header">INCLUDES:</h4>
-								<ul>
+								<div className="level-additional-info-header">INCLUDES:</div>
+								<ul className="level-includes-list">
 									{level.includes.map(item => <li className="includes-list-item">{item}</li>)}
 								</ul>
 							</div>
@@ -30,8 +30,8 @@ function FullLevels(props) {
 									<span className="level-additional-info-item">{level.shipsTo}</span>
 								</div>
 							</div>
+							<LevelBackersSection level={level} levelType="full"/>
 						</div>
-						<LevelBackersSection level={level} levelType="full"/>
 					</div>
 				)
 			})}

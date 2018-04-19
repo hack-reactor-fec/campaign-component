@@ -23,7 +23,7 @@ function LevelBackersSection(props) {
 	} else if (props.levelType === 'limited') {
 		if (props.level.numberOfBackers === 1) {
 			return (
-				<div className="limited-level-backers-section">
+				<div className="current-level-backers-section">
 					<div className="limited-backers-line">
 						Limited ({props.level.maxBackers - props.level.numberOfBackers} of {props.level.maxBackers})
 					</div>
@@ -34,7 +34,7 @@ function LevelBackersSection(props) {
 			)
 		} else {
 			return (
-				<div className="limited-level-backers-section">
+				<div className="current-level-backers-section">
 					<div className="limited-backers-line">
 						Limited ({props.level.maxBackers - props.level.numberOfBackers} of {props.level.maxBackers})
 					</div>

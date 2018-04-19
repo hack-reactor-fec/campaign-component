@@ -2,12 +2,13 @@ $font-stack: Karla, Helvetica, Arial;
 $primary-color: rgb(40, 40, 40);
 $level-text-color: rgb(101, 105, 105);
 $additional-info-text-color: rgb(2, 6, 33);
-$helper-border: 1px solid red;
 $level-vertical-padding: 20px;
 $level-side-padding: 18px;
 $border-highlight: rgb(0, 158, 116);
-$border-no-highlight: rgb(220, 222, 221);
+$border-general-grey: rgb(101, 105, 105);
+$border-general-width: 1px;
 $pledgebox-intra-spacing: 10px;
+$all-gone-background-color: rgb(251, 251, 250);
 
 body {
 	font-family: $font-stack;
@@ -52,19 +53,28 @@ input:focus {
 	font-family: $font-stack;
 	color: $primary-color;
 	font-size: 24px;
-	border: $helper-border;
 }
 
 #all-gone {
 	font-size: 24px;
 	font-weight: 700;
 	color: $primary-color;
+	margin-bottom: 12px;
+	margin-top: 18px;
+	padding-top: 12px;
 }
 
 .full-backers-line {
 	font-size: 12px;
 	font-weight: 700;
 	color: $primary-color;
+	background-color: rgb(232, 232, 232);
+	margin-bottom: 18px;
+	margin-right: 12px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	padding-left: 12px;
+	padding-right: 12px;
 }
 
 #app-container {
@@ -75,7 +85,6 @@ input:focus {
 	flex: 61;
 	display: flex;
 	justify-content: flex-end;
-	border: $helper-border;
 	margin-right: 20px;
 }
 
@@ -88,7 +97,6 @@ input:focus {
 	flex: 39;
 	display: flex;
 	justify-content: flex-start;
-	border: $helper-border;
 	margin-left: 20px;
 }
 
@@ -98,13 +106,11 @@ input:focus {
 }
 
 .support-components-subcontainer {
-	border: $helper-border;
 	padding-left: $level-side-padding;
 	padding-right: $level-side-padding;
 }
 
 .single-current-level-subcontainer {
-	border: $helper-border;
 	padding-left: $level-side-padding;
 	padding-right: $level-side-padding;
 	padding-top: $level-vertical-padding;
@@ -112,7 +118,6 @@ input:focus {
 }
 
 .full-level-subcontainer {
-	border: $helper-border;
 	padding-left: $level-side-padding;
 	padding-right: $level-side-padding;
 	padding-top: $level-vertical-padding;
@@ -120,7 +125,6 @@ input:focus {
 }
 
 #pledge-component-subcontainer {
-	border: $helper-border;
 	padding-left: $level-side-padding;
 	padding-right: $level-side-padding;
 	display: flex;
@@ -148,7 +152,9 @@ input:focus {
 }
 
 #pledge-component-container {
-	border: $helper-border;
+	border-color: $border-general-grey;
+	border-width: $border-general-width;
+	border-style: solid;
 }
 
 #pledge-amount-container {
@@ -176,7 +182,7 @@ input:focus {
 	}
 
 	.no-highlight {
-		border-color: $border-no-highlight;
+		border-color: $border-general-grey;
 		border-width: 1px;
 		border-style: solid;
 	}
@@ -189,59 +195,69 @@ input:focus {
 }
 
 .single-current-level-container {
-	border: $helper-border;
+	border-color: $border-general-grey;
+	border-width: $border-general-width;
+	border-style: solid;
 }
 
 .full-level {
-	border: $helper-border;
+	border-color: $border-general-grey;
+	border-width: $border-general-width;
+	border-style: solid;
+	background-color: $all-gone-background-color;
+}
+
+.full-level-backers-section {
+	margin-top: 18px;
 }
 
 .level-pledge-amount {
-	border: $helper-border;
 	margin-bottom: 20px;
 	font-size: 18px;
 	font-weight: 400;
 }
 
 .level-name {
-	border: $helper-border;
 	margin-bottom: 10px;
 	font-size: 16px;
 	font-weight: 400;
 }
 
 .level-description {
-	border: $helper-border;
 	font-size: 14px;
 	color: $level-text-color;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin-top: 0px;
+	margin-bottom: 20px;
 }
 
 .level-additional-info-header {
-	border: $helper-border;
 	font-size: 10px;
 	font-weight: 500;
 }
 
 .includes-list-item {
-	border: $helper-border;
 	font-size: 14px;
 	font-weight: 400;
 	color: $additional-info-text-color;
-	margin-bottom: 12px;
+}
+
+.level-includes-list {
+	margin-bottom: 20px;
 	margin-left: 18px;
 	padding-left: 12px;
+	padding-top: 0px;
+	margin-top: 0px;
 }
 
 .level-delivery-date-section {
-	border: $helper-border;
 }
 
 .level-delivery-region-section {
-	border: $helper-border;
 }
 
 .level-additional-info-item {
-	border: $helper-border;
 	font-size: 14px;
 	font-weight: 400;
 	color: $additional-info-text-color;
@@ -259,7 +275,9 @@ input:focus {
 	color: rgb(255, 81, 81);
 }
 
-
+.current-level-backers-section {
+	margin-top: 18px;
+}
 
 
 
