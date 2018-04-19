@@ -3,7 +3,8 @@ $primary-color: rgb(40, 40, 40);
 $level-text-color: rgb(101, 105, 105);
 $additional-info-text-color: rgb(2, 6, 33);
 $helper-border: 1px solid red;
-$level-padding: 18px;
+$level-vertical-padding: 20px;
+$level-side-padding: 18px;
 $border-highlight: rgb(0, 158, 116);
 $border-no-highlight: rgb(220, 222, 221);
 $pledgebox-intra-spacing: 10px;
@@ -98,26 +99,30 @@ input:focus {
 
 .support-components-subcontainer {
 	border: $helper-border;
-	padding-left: $level-padding;
-	padding-right: $level-padding;
+	padding-left: $level-side-padding;
+	padding-right: $level-side-padding;
 }
 
 .single-current-level-subcontainer {
 	border: $helper-border;
-	padding-left: $level-padding;
-	padding-right: $level-padding;
+	padding-left: $level-side-padding;
+	padding-right: $level-side-padding;
+	padding-top: $level-vertical-padding;
+	padding-bottom: $level-vertical-padding;
 }
 
 .full-level-subcontainer {
 	border: $helper-border;
-	padding-left: $level-padding;
-	padding-right: $level-padding;
+	padding-left: $level-side-padding;
+	padding-right: $level-side-padding;
+	padding-top: $level-vertical-padding;
+	padding-bottom: $level-vertical-padding;
 }
 
 #pledge-component-subcontainer {
 	border: $helper-border;
-	padding-left: $level-padding;
-	padding-right: $level-padding;
+	padding-left: $level-side-padding;
+	padding-right: $level-side-padding;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
@@ -193,12 +198,14 @@ input:focus {
 
 .level-pledge-amount {
 	border: $helper-border;
+	margin-bottom: 20px;
 	font-size: 18px;
 	font-weight: 400;
 }
 
 .level-name {
 	border: $helper-border;
+	margin-bottom: 10px;
 	font-size: 16px;
 	font-weight: 400;
 }
@@ -220,6 +227,9 @@ input:focus {
 	font-size: 14px;
 	font-weight: 400;
 	color: $additional-info-text-color;
+	margin-bottom: 12px;
+	margin-left: 18px;
+	padding-left: 12px;
 }
 
 .level-delivery-date-section {
