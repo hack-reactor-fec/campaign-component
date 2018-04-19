@@ -10,16 +10,19 @@ class PledgeBox extends React.Component {
 		this.state = {
 			amount: '',
 			continueButtonDisplay: false,
-			highlightInputArea: false
+			activeInputArea: false,
+			hoverInputArea: false
 		}
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleClickOutside = this.handleClickOutside.bind(this);
 		this.handleContinueButtonClick = this.handleContinueButtonClick.bind(this);
 		this.handleInputTextClick = this.handleInputTextClick.bind(this);
+		this.handleInputTextMouseEnter = this.handleInputTextMouseEnter.bind(this);
+		this.handleInputTextMouseLeave = this.handleInputTextMouseLeave.bind(this);
 	}
 
 	handleClickOutside() {
-		this.setState({highlightInputArea: false});
+		this.setState({activeInputArea: false});
 	}
 
 	handleInputChange(e) {
@@ -28,9 +31,17 @@ class PledgeBox extends React.Component {
 
 	handleInputTextClick(e) {
 		// display continue button
-		this.setState({continueButtonDisplay: true, highlightInputArea: true});
+		this.setState({continueButtonDisplay: true, activeInputArea: true});
 		// highlight input text area and currency div in green
 		// when user clicks out of that input text area, have to unhighlight but leave continue button
+	}
+
+	handleInputTextMouseEnter(e) {
+		this.setState({hoverInputArea: true});
+	}
+
+	handleInputTextMouseLeave(e) {
+		this.setState({hoverInputArea: false});
 	}
 
 	handleContinueButtonClick() {
@@ -56,7 +67,7 @@ class PledgeBox extends React.Component {
 						<div id="pledge-header" className="pledge-component">Make a pledge without a reward</div>
 					</div>
 					<div className="pledge-flex-div">
-						<PledgeInputArea handleInputChange={this.handleInputChange} handleInputTextClick={this.handleInputTextClick} handleClickOutside={this.handleClickOutside} highlightInputArea={this.state.highlightInputArea}/>
+						<PledgeInputArea handleInputChange={this.handleInputChange} handleInputTextMouseLeave={this.handleInputTextMouseLeave} handleInputTextMouseEnter={this.handleInputTextMouseEnter} handleInputTextClick={this.handleInputTextClick} handleClickOutside={this.handleClickOutside} hoverInputArea={this.state.hoverInputArea} activeInputArea={this.state.activeInputArea}/>
 					</div>
 					<div className="pledge-flex-div">
 						<button type="button" id="continue-button" onClick={this.handleContinueButtonClick} className={this.state.continueButtonDisplay ? 'pledge-component display-button' : 'pledge-component hide-button'}>Continue</button>
