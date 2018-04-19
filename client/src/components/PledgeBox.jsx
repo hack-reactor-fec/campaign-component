@@ -52,9 +52,15 @@ class PledgeBox extends React.Component {
 		return (
 			<div id="pledge-component-container" className="support-item">
 				<div id="pledge-component-subcontainer">
-					<div id="pledge-header">Make a pledge without a reward</div>
-					<PledgeInputArea handleInputChange={this.handleInputChange} handleInputTextClick={this.handleInputTextClick} handleClickOutside={this.handleClickOutside} highlightInputArea={this.state.highlightInputArea}/>
-					<button type="button" id="continue-button" onClick={this.handleContinueButtonClick} className={this.state.continueButtonDisplay ? 'display-button' : 'hide-button'}>Continue</button>
+					<div className="pledge-flex-div">
+						<div id="pledge-header" className="pledge-component">Make a pledge without a reward</div>
+					</div>
+					<div className="pledge-flex-div">
+						<PledgeInputArea handleInputChange={this.handleInputChange} handleInputTextClick={this.handleInputTextClick} handleClickOutside={this.handleClickOutside} highlightInputArea={this.state.highlightInputArea}/>
+					</div>
+					<div className="pledge-flex-div">
+						<button type="button" id="continue-button" onClick={this.handleContinueButtonClick} className={this.state.continueButtonDisplay ? 'pledge-component display-button' : 'pledge-component hide-button'}>Continue</button>
+					</div>
 				</div>
 			</div>
 		)
