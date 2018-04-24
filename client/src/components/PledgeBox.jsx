@@ -70,7 +70,7 @@ class PledgeBox extends React.Component {
 						<PledgeInputArea handleInputChange={this.handleInputChange} handleInputTextMouseLeave={this.handleInputTextMouseLeave} handleInputTextMouseEnter={this.handleInputTextMouseEnter} handleInputTextClick={this.handleInputTextClick} handleClickOutside={this.handleClickOutside} hoverInputArea={this.state.hoverInputArea} activeInputArea={this.state.activeInputArea}/>
 					</div>
 					<div className="pledge-flex-div">
-						<button type="button" id="continue-button" onClick={this.handleContinueButtonClick} className={this.state.continueButtonDisplay ? 'pledge-component display-button' : 'pledge-component hide-button'}>Continue</button>
+						<button type="button" id="continue-button" onClick={this.handleContinueButtonClick} className={this.state.continueButtonDisplay ? 'pledge-component display-button continue-button' : 'pledge-component hide-area continue-button'}>Continue</button>
 					</div>
 				</div>
 			</div>
