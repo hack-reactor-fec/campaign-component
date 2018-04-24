@@ -17,7 +17,7 @@ class Support extends React.Component {
 	}
 
 	componentDidMount() {
-		axios.get(`/levels/${this.props.projectId}`)
+		axios.get(`http://localhost:3003/levels/${this.props.projectId}`)
 		.then(results => {
 			let levels = results.data;
 			let updatedAllCurrentLevels = [];
