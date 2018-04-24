@@ -1,6 +1,7 @@
 const express = require('express');
 const parser = require('body-parser');
 const morgan = require('morgan');
+const cors = require('cors');
 //const router = require('./routes.js');
 const getLevels = require('../db/index.js').getLevels;
 const getAboutInfo = require('../db/index.js').getAboutInfo;
@@ -8,12 +9,13 @@ const saveUserNewBackedProjects = require('../db/index.js').saveUserNewBackedPro
 
 var app = express();
 
-let port = 3000;
+let port = process.env.PORT || 3003;
 
 // Logging and parsing
 app.use(morgan('dev'));
 app.use(parser.json());
 app.use(parser.urlencoded({extended: true}));
+app.use(cors());
 
 // Set up our routes
 // app.use('/levels', router);

@@ -26,7 +26,7 @@ class App extends React.Component {
 
 // for now use project 3 and user Saige99
 $(document).ready(function() {
-	ReactDOM.render(<App projectId="3" username="Saige99"/>, document.getElementById('container'));
+	ReactDOM.render(<App projectId="3" username="Saige99"/>, document.getElementById('Campaign'));
 });
 
 export default App;
