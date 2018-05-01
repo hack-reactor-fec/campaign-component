@@ -6,6 +6,9 @@ const cors = require('cors');
 const getLevels = require('../db/index.js').getLevels;
 const getAboutInfo = require('../db/index.js').getAboutInfo;
 const saveUserNewBackedProjects = require('../db/index.js').saveUserNewBackedProjects;
+const Project = require('../db/index.js').Project;
+const User = require('../db/index.js').User;
+
 
 var app = express();
 
@@ -54,10 +57,64 @@ app.post('/users', (req, res) => {
 		res.end('');
 	})
 	.catch(err => {
+		console.log('error in post /users');
 		res.writeHead(404);
 		res.end('');
 	});
 });
+
+app.post('/:projectId/:levelId/:pledgeAmount', (req, res) => {
+	let projectId = req.params.projectId;
+	let levelId = req.params.levelId;
+	let pledgeAmount = req.params.pledgeAmount;
+	let query = {};
+	query['id'] = projectId;
+	Project.findOne(query)
+	.then((err, result) => {
+		for (let i = 0; i < result.levels.length; i++) {
+			if (result.levels[i].id === levelId) {
+				result.levels[i].numberOfBackers += 1;
+			}
+		}
+		let projectData = new Project(result);
+		projectData.save(err => {
+			if (err) {
+				res.end('');
+			} else {
+				res.writeHead(201);
+				res.end(err);
+			}
+		});
+	})
+	.catch(err => {
+		console.log('error in post /:projectId/:levelId/:pledgeAmount');
+		res.writeHead(404);
+		res.end(err);
+	})
+})
+
+app.post('/:projectId/:pledgeAmount', (req, res) => {
+	let projectId = req.params.projectId;
+	let pledgeAmount = req.params.pledgeAmount;
+	let query = {};
+	query['id'] = projectId;
+	Project.findOne(query)
+	.then((err, result) => {
+		result.numberOfBackers += 1;
+		let projectData = new Project(result);
+		projectData.save(err => {
+			if (err) {
+				res.end('');
+			} else {
+				res.end(err);
+			}
+		});
+	})
+	.catch(err => {
+		console.log('error in post /:projectId/:pledgeAmount');
+		res.end(err);
+	})
+})
 
 app.use(express.static(__dirname + '/../client/dist'));
 

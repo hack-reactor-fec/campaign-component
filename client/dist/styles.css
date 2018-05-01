@@ -9,6 +9,16 @@ input:focus {
   border-color: #009e74;
 }
 
+.about-info-photo {
+  max-width: 100%;
+}
+
+.about-info-paragraph {
+  line-height: 30px;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
 .level-extra-info-section {
   display: flex;
 }
@@ -194,13 +204,13 @@ select {
   border-style: solid;
 }
 
-#pledge-amount-container {
+.pledge-amount-container {
   line-height: 42px;
   display: flex;
   justify-content: flex-start;
   margin-bottom: 18px;
 }
-#pledge-amount-container #pledge-amount-currency-symbol {
+.pledge-amount-container .pledge-amount-currency-symbol {
   flex: 1;
   font-weight: 400px;
   font-size: 14px;
@@ -210,18 +220,18 @@ select {
   margin-right: auto;
   color: #656969;
 }
-#pledge-amount-container #pledge-amount-chosen {
+.pledge-amount-container .pledge-amount-chosen {
   flex: 6;
   font-size: 14px;
   padding-left: 5px;
   color: #282828;
 }
-#pledge-amount-container .no-highlight {
+.pledge-amount-container .no-highlight {
   border-color: #dcdedd;
   border-width: 1px;
   border-style: solid;
 }
-#pledge-amount-container .highlight {
+.pledge-amount-container .highlight {
   border-style: solid;
   border-width: 1px;
   border-color: #009e74;

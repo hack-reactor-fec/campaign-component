@@ -22,6 +22,16 @@ input:focus {
 	border-color: $border-highlight;
 }
 
+.about-info-photo {
+	max-width: 100%;
+}
+
+.about-info-paragraph {
+	line-height: 30px;
+	margin-bottom: 30px;
+	font-size: 16px;
+}
+
 .level-extra-info-section {
 	display: flex;
 }
@@ -214,14 +224,14 @@ select {
 	border-style: solid;
 }
 
-#pledge-amount-container {
+.pledge-amount-container {
 
 	line-height: 42px;
 	display: flex;
 	justify-content: flex-start;
 	margin-bottom: 18px;
 
-	#pledge-amount-currency-symbol {
+	.pledge-amount-currency-symbol {
 		flex: 1;
 		font-weight: 400px;
 		font-size: 14px;
@@ -232,7 +242,7 @@ select {
 		color: $level-text-color;
 	}
 
-	#pledge-amount-chosen {
+	.pledge-amount-chosen {
 		flex: 6;
 		font-size: 14px;
 		padding-left: 5px;

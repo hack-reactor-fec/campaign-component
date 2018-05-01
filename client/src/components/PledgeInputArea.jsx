@@ -29,9 +29,9 @@ class PledgeInputArea extends React.Component {
 	render() {
 		return (
 			<div ref={node => {this.node = node}}>
-				<div id="pledge-amount-container">
-						<span id="pledge-amount-currency-symbol" className={this.props.activeInputArea || this.props.hoverInputArea ? 'pledge-component highlight' : 'pledge-component no-highlight'}>$</span>
-						<input type="text" id="pledge-amount-chosen" className={this.props.activeInputArea || this.props.hoverInputArea ? 'pledge-component highlight' : 'pledge-component no-highlight'} value={this.props.starting ? this.props.starting : ''} placeholder="Pledge any amount" onMouseEnter={this.props.handleInputTextMouseEnter} onMouseLeave={this.props.handleInputTextMouseLeave} onChange={this.props.handleInputChange} onClick={this.props.handleInputTextClick}/>
+				<div className="pledge-amount-container">
+						<span className={this.props.activeInputArea || this.props.hoverInputArea ? 'pledge-amount-currency-symbol pledge-component highlight' : 'pledge-amount-currency-symbol pledge-component no-highlight'}>$</span>
+						<input type="text" className={this.props.activeInputArea || this.props.hoverInputArea ? ' pledge-amount-chosen pledge-component highlight' : 'pledge-amount-chosen pledge-component no-highlight'} value={this.props.amount ? this.props.amount : (this.props.starting ? this.props.starting : '')} placeholder="Pledge any amount" onMouseEnter={this.props.handleInputTextMouseEnter} onMouseLeave={this.props.handleInputTextMouseLeave} onChange={this.props.handleInputChange} onClick={this.props.handleInputTextClick}/>
 				</div>
 			</div>
 		)

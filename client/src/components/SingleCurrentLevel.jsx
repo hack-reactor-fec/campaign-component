@@ -53,15 +53,21 @@ class SingleCurrentLevel extends React.Component {
 		this.setState({hoverInputArea: false});
 	}
 
-	handleContinueButtonClick() {
+	handleContinueButtonClick(e) {
 		let userNewBackedProject = {};
 		userNewBackedProject.username = this.props.username;
 		userNewBackedProject.projectId = this.props.projectId;
-		userNewBackedProject.amount = $('#pledge-amount-chosen').val();
+		let pledgeAmount = e.target.closest('.single-current-level-master-container').find('.pledge-amount-chosen').value;
+		userNewBackedProject.amount = pledgeAmount;
 		axios.post('/users', userNewBackedProject)
 		.then(response => {
 			// what actually happens, is there a thank you message?
-			$('#pledge-amount-chosen').val('');
+			let levelId = e.target.closest('.single-current-level-master-container').id;
+			axios.post(`/${this.props.projectId}/${levelId}/${pledgeAmount}`)
+		})
+		.then(response => {
+			e.target.closest('.single-current-level-master-container').find('.pledge-amount-chosen').value = '';
+			this.props.fetchLevels();
 		})
 		.catch(err => {
 			console.log('ERROR', err);
@@ -78,7 +84,7 @@ class SingleCurrentLevel extends React.Component {
 
 	render() {
 		return (
-			<div className="single-current-level-master-container support-item" onClick={this.handleLevelClick} onMouseLeave={this.handleLevelMouseLeave} onMouseEnter={this.handleLevelMouseEnter}>
+			<div id={this.props.level.id} className="single-current-level-master-container support-item" onClick={this.handleLevelClick} onMouseLeave={this.handleLevelMouseLeave} onMouseEnter={this.handleLevelMouseEnter}>
 				<div className={this.state.highlightLevel ? "green-background" : "green-background invisible"}>
 					<span>Select reward</span>
 				</div>
@@ -109,7 +115,7 @@ class SingleCurrentLevel extends React.Component {
 							<label className="pledge-label">
 								Pledge amount
 								<div className="label-separation">
-									<PledgeInputArea starting={this.props.level.cutoffAmount} handleInputChange={this.handleInputChange} handleInputTextMouseLeave={this.handleInputTextMouseLeave} handleInputTextMouseEnter={this.handleInputTextMouseEnter} handleInputTextClick={this.handleInputTextClick} handleClickOutside={this.handleClickOutside} hoverInputArea={this.state.hoverInputArea} activeInputArea={this.state.activeInputArea}/>
+									<PledgeInputArea amount={this.state.amount} starting={this.props.level.cutoffAmount} handleInputChange={this.handleInputChange} handleInputTextMouseLeave={this.handleInputTextMouseLeave} handleInputTextMouseEnter={this.handleInputTextMouseEnter} handleInputTextClick={this.handleInputTextClick} handleClickOutside={this.handleClickOutside} hoverInputArea={this.state.hoverInputArea} activeInputArea={this.state.activeInputArea}/>
 									<button type="button" onClick={this.handleContinueButtonClick} className={this.state.orderInfoDisplay ? 'pledge-component continue-button extra-info' : 'pledge-component hide-area continue-button extra-info'}>Continue</button>
 								</div>
 							</label>

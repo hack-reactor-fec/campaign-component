@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/kickstarter');
+mongoose.connect('mongodb://admin:notairbnb@ds159129.mlab.com:59129/campaign-module');
 
 const Schema = mongoose.Schema;
 
@@ -8,8 +8,9 @@ let projectSchema = new Schema({
 		type: Number, 
 		unique: true
 	},
-	'levels': [{'cutoffAmount': Number, 'name': String, 'description': String, 'includes': [String], 'estimatedDelivery': Date, 'shipsTo': String, 'numberOfBackers': Number, 'maxBackers': Number}],
-	'aboutInfo': String
+	'levels': [{'id': Number, 'cutoffAmount': Number, 'name': String, 'description': String, 'includes': [String], 'estimatedDelivery': Date, 'shipsTo': String, 'numberOfBackers': Number, 'maxBackers': Number}],
+	'aboutInfo': String,
+	'numberOfBackers': Number
 })
 
 let userSchema = new Schema({
@@ -138,6 +139,8 @@ let getAboutInfo = (projectId) => {
 	});
 }
 
+module.exports.Project = Project;
+module.exports.User = User;
 module.exports.saveUsers = saveUsers;
 module.exports.saveProjects = saveProjects;
 module.exports.getLevels = getLevels;
