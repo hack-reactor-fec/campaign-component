@@ -1,0 +1,20 @@
+$font-stack: Karla, Helvetica, Arial;
+$primary-color: rgb(40, 40, 40);
+
+#support-master-container {
+	flex: 39;
+	display: flex;
+	justify-content: flex-start;
+	margin-left: 20px;
+}
+
+#support-container {
+	position: relative;
+	width: 50%;
+}
+
+.section-header {
+	font-family: $font-stack;
+	color: $primary-color;
+	font-size: 24px;
+}

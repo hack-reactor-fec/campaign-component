@@ -1,0 +1,35 @@
+@import 'Level';
+
+$primary-color: rgb(40, 40, 40);
+$border-general-grey: rgb(101, 105, 105);
+$border-general-width: 1px;
+$all-gone-background-color: rgb(251, 251, 250);
+$level-vertical-padding: 20px;
+$level-side-padding: 18px;
+
+.support-item {
+	margin-bottom: 20px;
+}
+
+#all-gone {
+	font-size: 24px;
+	font-weight: 700;
+	color: $primary-color;
+	margin-bottom: 12px;
+	margin-top: 18px;
+	padding-top: 12px;
+}
+
+.full-level {
+	border-color: $border-general-grey;
+	border-width: $border-general-width;
+	border-style: solid;
+	background-color: $all-gone-background-color;
+}
+
+.full-level-subcontainer {
+	padding-left: $level-side-padding;
+	padding-right: $level-side-padding;
+	padding-top: $level-vertical-padding;
+	padding-bottom: $level-vertical-padding;
+}

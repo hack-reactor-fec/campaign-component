@@ -1,0 +1,31 @@
+$border-general-grey: rgb(101, 105, 105);
+$border-general-width: 1px;
+$level-side-padding: 18px;
+
+.support-item {
+	margin-bottom: 20px;
+}
+
+#pledge-component-container {
+	border-color: $border-general-grey;
+	border-width: $border-general-width;
+	border-style: solid;
+}
+
+#pledge-component-subcontainer {
+	padding-left: $level-side-padding;
+	padding-right: $level-side-padding;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.pledge-flex-div {
+	flex: 1;
+}
+
+#pledge-header {
+	padding-top: 20px;
+	padding-bottom: 16px;
+	font-size: 18px;
+}

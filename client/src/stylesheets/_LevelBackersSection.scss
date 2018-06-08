@@ -1,0 +1,33 @@
+$regular-font-weight: 400px;
+$medium-font-weight: 500px;
+$level-text-color: rgb(101, 105, 105);
+
+.level-backers-section {
+	margin-top: 18px;
+}
+
+.limited-backers-line {
+	font-size: 12px;
+	font-weight: $medium-font-weight;
+	color: rgb(255, 81, 81);
+}
+
+.backers-line {
+	font-size: 12px;
+	font-weight: $regular-font-weight;
+	color: $level-text-color;
+	margin-bottom: 10px;
+}
+
+.full-backers-line {
+	font-size: 12px;
+	font-weight: 700;
+	color: $primary-color;
+	background-color: rgb(232, 232, 232);
+	margin-bottom: 18px;
+	margin-right: 12px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	padding-left: 12px;
+	padding-right: 12px;
+}

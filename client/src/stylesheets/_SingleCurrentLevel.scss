@@ -1,0 +1,44 @@
+@import 'Level';
+
+$level-vertical-padding: 20px;
+$level-side-padding: 18px;
+$border-general-grey: rgb(101, 105, 105);
+$border-general-width: 1px;
+$medium-font-weight: 500px;
+$level-text-color: rgb(101, 105, 105);
+
+.hide-area {
+	display: none;
+}
+
+.single-current-level-master-container {
+	border-color: $border-general-grey;
+	border-width: $border-general-width;
+	border-style: solid;
+	cursor: pointer;
+	position: relative;
+	z-index: 0;
+}
+
+.single-current-level-subcontainer {
+	padding-left: $level-side-padding;
+	padding-right: $level-side-padding;
+	padding-top: $level-vertical-padding;
+	padding-bottom: $level-vertical-padding;
+}
+
+.level-pledge-form {
+	margin-bottom: 0px;
+	margin-top: 18px;
+}
+
+.pledge-label {
+	font-size: 12px;
+	font-weight: $medium-font-weight;
+	color: $level-text-color;
+	margin-bottom: 5px;
+}
+
+.label-separation {
+	margin-top: 5px;
+}
