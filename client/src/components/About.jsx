@@ -1,8 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
 import axios from 'axios';
 
-class About extends React.Component {
+class About extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
@@ -12,12 +11,13 @@ class About extends React.Component {
 
 	componentDidMount() {
 		let context = this;
-		axios.get(`http://54.209.149.1:80/about/${this.props.projectId}`)
+		// fetch data for the about section for this project
+		axios.get(`http://localhost:3003/about/${this.props.projectId}`)
 		.then(result => {
 			context.setState({aboutInfo: result.data});
 		})
 		.catch(err => {
-			console.log('ERROR', err);
+			// console.log('ERROR', err);
 		})
 	}
 
@@ -25,7 +25,7 @@ class About extends React.Component {
 		return (
 			<div id="about-master-container">
 				<div id="about-container">
-					<h1 id="about-header" className="section-header">About</h1>
+					<h1 className="section-header">About</h1>
 					<div id="about-info">{this.state.aboutInfo}</div>
 				</div>
 			</div>

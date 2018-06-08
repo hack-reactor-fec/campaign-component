@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 
 let projectSchema = new Schema({
 	'id': {
-		type: Number, 
+		type: Number,
+		index: true, 
 		unique: true
 	},
 	'levels': [{'id': Number, 'cutoffAmount': Number, 'name': String, 'description': String, 'includes': [String], 'estimatedDelivery': Date, 'shipsTo': String, 'numberOfBackers': Number, 'maxBackers': Number}],
@@ -15,7 +16,8 @@ let projectSchema = new Schema({
 
 let userSchema = new Schema({
 	'username': {
-		type: String, 
+		type: String,
+		index: true, 
 		unique: true
 	},
 	'projectsBacked': [{'projectId': Number, 'amount': Number}]
@@ -31,7 +33,6 @@ let saveProjects = (projects) => {
 			let projectData = new Project(projects[i]);
 			projectData.save(err => {
 				if (err) {
-					console.log('ERROR in saveProjects', err);
 					reject(err);
 				} else {
 					resolve(1);
@@ -89,7 +90,6 @@ let saveUsers = (users) => {
 			let userData = new User(users[i]);
 			userData.save(err => {
 				if (err) {
-					console.log('ERROR in saveUsers', err);
 					reject(err);
 				} else {
 					resolve(1);
@@ -105,14 +105,12 @@ let getLevels = (projectId) => {
 		projectId = Number(projectId);
 		var query = {};
 		query['id'] = projectId;
-		Project.find(query).
+		Project.findOne(query).
 		exec((err, project) => {
 			if (err) {
 				reject(err);
 			} else {
-				console.log('project', project);
-				let levels = project[0]['levels'];
-				console.log('levels', levels);
+				let levels = project['levels'];
 				levels.sort(function(a,b) {
 					return (a.cutoffAmount > b.cutoffAmount) ? 1 : ((b.cutoffAmount > a.cutoffAmount) ? -1 : 0);
 				}); 				
@@ -127,12 +125,12 @@ let getAboutInfo = (projectId) => {
 		projectId = Number(projectId);
 		var query = {};
 		query['id'] = projectId;
-		Project.find(query).
+		Project.findOne(query).
 		exec((err, project) => {
 			if (err) {
 				reject(err);
 			} else {
-				let aboutInfo = project[0]['aboutInfo'];				
+				let aboutInfo = project['aboutInfo'];				
 				resolve(aboutInfo);
 			}
 		});

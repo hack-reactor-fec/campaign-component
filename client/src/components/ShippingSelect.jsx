@@ -1,17 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios';
+import React, { Component } from 'react';
 
-class ShippingSelect extends React.Component {
+class ShippingSelect extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
 			value: this.props.shipsTo
 		}
-		this.handleChange = this.handleChange.bind(this);
 	}
 
-	handleChange(e) {
+	handleChange = (e) => {
 	    this.setState({value: e.target.value});
 	  }
 
@@ -22,7 +19,7 @@ class ShippingSelect extends React.Component {
 					Shipping destination
 					<div className="label-separation">
 						<select className="select-dropdown" value={this.state.value} onChange={this.handleChange}>
-							<option className="shipping-value" value={this.props.shipsTo}>{this.props.shipsTo}</option>
+							<option value={this.props.shipsTo}>{this.props.shipsTo}</option>
 						</select>
 					</div>
 				</label>

@@ -1,0 +1,68 @@
+$regular-font-weight: 400px;
+$medium-font-weight: 500px;
+$level-text-color: rgb(101, 105, 105);
+$additional-info-text-color: rgb(2, 6, 33);
+
+.support-item {
+	margin-bottom: 20px;
+}
+
+.level-pledge-amount {
+	margin-bottom: 20px;
+	font-size: 18px;
+	font-weight: $regular-font-weight;
+}
+
+.level-name {
+	margin-bottom: 10px;
+	font-size: 16px;
+	font-weight: $regular-font-weight;
+}
+
+.level-description {
+	font-size: 14px;
+	color: $level-text-color;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin-top: 0px;
+	margin-bottom: 20px;
+}
+
+.level-additional-info-header {
+	font-size: 10px;
+	font-weight: $medium-font-weight;
+	display: block;
+	color: $level-text-color;
+}
+
+.level-additional-info-item {
+	font-size: 14px;
+	font-weight: $regular-font-weight;
+	color: $additional-info-text-color;
+}
+
+.level-includes-list {
+	margin-bottom: 20px;
+	margin-left: 18px;
+	padding-left: 12px;
+	padding-top: 0px;
+	margin-top: 0px;
+}
+
+.includes-list-item {
+	font-size: 14px;
+	font-weight: 400;
+	color: $additional-info-text-color;
+}
+
+.level-extra-info-section {
+	display: flex;
+}
+
+.level-delivery-date-section {
+	flex: 1;
+}
+
+.level-delivery-region-section {
+	flex: 1;
+}

@@ -1,73 +1,30 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 function LevelBackersSection(props) {
-	if (props.levelType === 'current') {
-		if (props.level.numberOfBackers === 1) {
-			return (
-				<div className="current-level-backers-section">
-					<div className="backers-line">
-						{props.level.numberOfBackers} backer
-					</div>
-				</div>
-			)
-		} else {
-			return (
-				<div className="current-level-backers-section">
-					<div className="backers-line">
-						{props.level.numberOfBackers} backers
-					</div>
-				</div>
-			)
-		}
-	} else if (props.levelType === 'limited') {
-		if (props.level.numberOfBackers === 1) {
-			return (
-				<div className="current-level-backers-section">
+	if (props.levelType === 'current' || props.levelType === 'limited') {
+		return (
+			<div className="level-backers-section">
+				{props.levelType === 'limited' && 
 					<div className="limited-backers-line">
 						Limited ({props.level.maxBackers - props.level.numberOfBackers} of {props.level.maxBackers})
 					</div>
-					<div className="backers-line">
-						{props.level.numberOfBackers} backer
-					</div>
+				}
+				<div className="backers-line">
+					{`${props.level.numberOfBackers} backer${props.level.numberOfBackers === 1 ? '' : 's'}`}
 				</div>
-			)
-		} else {
-			return (
-				<div className="current-level-backers-section">
-					<div className="limited-backers-line">
-						Limited ({props.level.maxBackers - props.level.numberOfBackers} of {props.level.maxBackers})
-					</div>
-					<div className="backers-line">
-						{props.level.numberOfBackers} backers
-					</div>
-				</div>
-			)
-		}
+			</div>
+		)
 	} else {
-		if (props.level.numberOfBackers === 1) {
-			return (
-				<div className="full-level-backers-section">
-					<div className="full-backers-line">
-						Reward no longer available
-					</div>
-					<div className="backers-line">
-						{props.level.numberOfBackers} backer
-					</div>
+		return (
+			<div className="level-backers-section">
+				<div className="full-backers-line">
+					Reward no longer available
 				</div>
-			)
-		} else {
-			return (
-				<div className="full-level-backers-section">
-					<div className="full-backers-line">
-						Reward no longer available
-					</div>
-					<div className="backers-line">
-						{props.level.numberOfBackers} backers
-					</div>
+				<div className="backers-line">
+					{`${props.level.numberOfBackers} backer${props.level.numberOfBackers === 1 ? '' : 's'}`}
 				</div>
-			)
-		}
+			</div>
+		)
 	}
 }
 

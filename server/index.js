@@ -20,9 +20,6 @@ app.use(parser.json());
 app.use(parser.urlencoded({extended: true}));
 app.use(cors());
 
-// Set up our routes
-// app.use('/levels', router);
-
 app.get('/levels/:projectId', (req, res) => {
 	getLevels(req.params.projectId)
 	.then(results => {
@@ -32,7 +29,7 @@ app.get('/levels/:projectId', (req, res) => {
 	.catch(err => {
 		console.log('ERROR in get /levels', err);
 		res.writeHead(404);
-		res.end('');
+		res.end(err);
 	});
 });
 
@@ -45,7 +42,7 @@ app.get('/about/:projectId', (req, res) => {
 	.catch(err => {
 		console.log('ERROR in get /about', err);
 		res.writeHead(404);
-		res.end('');
+		res.end(err);
 	});
 });
 
@@ -54,12 +51,12 @@ app.post('/users', (req, res) => {
 	saveUserNewBackedProjects(userNewProject)
 	.then(result => {
 		res.writeHead(201);
-		res.end('');
+		res.end(result);
 	})
 	.catch(err => {
 		console.log('error in post /users');
 		res.writeHead(404);
-		res.end('');
+		res.end(err);
 	});
 });
 
@@ -79,10 +76,10 @@ app.post('/:projectId/:levelId/:pledgeAmount', (req, res) => {
 		let projectData = new Project(result);
 		projectData.save(err => {
 			if (err) {
-				res.end('');
+				res.end(err);
 			} else {
 				res.writeHead(201);
-				res.end(err);
+				res.end();
 			}
 		});
 	})
@@ -104,9 +101,9 @@ app.post('/:projectId/:pledgeAmount', (req, res) => {
 		let projectData = new Project(result);
 		projectData.save(err => {
 			if (err) {
-				res.end('');
-			} else {
 				res.end(err);
+			} else {
+				res.end();
 			}
 		});
 	})
