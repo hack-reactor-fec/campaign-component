@@ -5,10 +5,24 @@ class PledgeInputArea extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			amount: props.startingAmount,
+			amount: '',
+			minAmount: '',
+			badInput: false,
 			activeInputArea: false,
 			inputClicked: false,
 			hoverInputArea: false
+		}
+	}
+
+	componentDidMount() {
+		if (this.props.level && this.props.levelClicked) {
+			console.log('textInput', this[`node${this.props.levelId}`].querySelector('input'));
+			this[`node${this.props.levelId}`].querySelector('input').focus();
+			let context = this;
+			this.setState({activeInputArea: true, amount: context.props.startingAmount, minAmount: context.props.startingAmount});
+		} else {
+			let context = this;
+			this.setState({amount: context.props.startingAmount, minAmount: '1'});
 		}
 	}
 
@@ -22,7 +36,25 @@ class PledgeInputArea extends Component {
 
 	handleInputChange = (e) => {
 		// update amount whenever value is changed in input text
-		this.setState({amount: e.target.value});
+		let badInput = false;
+		let originalInput = e.target.value;
+		let input = e.target.value.trim();
+		// check for empty string before running isNaN
+		if (!originalInput) {
+			badInput = true;
+		// filter out non-numbers
+		} else if (isNaN(input)) {
+			badInput = true;
+		} else {
+			// check for valid currency decimal values
+			if (input.includes('.') && input.split('.')[1].length > 2) {
+				badInput = true;
+			// make sure amount is greater than minAmount (could add check to ensure not too large/small, overflow)
+			} else if (parseFloat(input) < parseFloat(this.state.minAmount)) {
+				badInput = true;
+			}
+		}
+		this.setState({amount: originalInput, badInput: badInput});
 	}
 
 	handleInputTextClick = (e) => {
@@ -33,12 +65,21 @@ class PledgeInputArea extends Component {
 
 	handleClickOutside = () => {
 		// when user clicks out of that input text area, have to unhighlight
-		this.setState({activeInputArea: false});
+		let cleanedInput = this.state.amount.trim();
+		this.setState({amount: cleanedInput, activeInputArea: false});
 	}
 
 	handleClick = (e) => {
-		if (this.node.contains(e.target)) {
-			return;
+		console.log('click target', e.target);
+		console.log('node', this.node);
+		if (this.props.pledgeBox) {
+			if (this.node.contains(e.target)) {
+				return;
+			}
+		} else {
+			if (this[`node${this.props.levelId}`].querySelector('input').contains(e.target)) {
+				return;
+			}
 		}
 		this.handleClickOutside();
 	}
@@ -81,18 +122,42 @@ class PledgeInputArea extends Component {
 
 	render() {
 		return (
-			<div ref={node => {this.node = node}}>
+			<div ref={ node => {
+				this.props.level ? this[`node${this.props.levelId}`] = node : this.node = node; 
+			}}>
 				<div className="pledge-amount-container" onMouseEnter={this.handleInputTextMouseEnter} onMouseLeave={this.handleInputTextMouseLeave}>
-						<span className={(this.state.activeInputArea || this.state.hoverInputArea) ? 'pledge-amount-currency-symbol highlight' : 'pledge-amount-currency-symbol no-highlight'}>$</span>
+						<span className={
+							(this.state.activeInputArea || this.state.hoverInputArea) 
+							? 'pledge-amount-currency-symbol highlight' 
+							: 'pledge-amount-currency-symbol no-highlight'
+							}>$</span>
 						<input type="text" 
-							className={(this.state.activeInputArea || this.state.hoverInputArea) ? ' pledge-amount-chosen highlight' : 'pledge-amount-chosen no-highlight'} 
+							className={
+								(this.state.activeInputArea || this.state.hoverInputArea) 
+								? ' pledge-amount-chosen highlight' 
+								: 'pledge-amount-chosen no-highlight'} 
 							placeholder={(this.props.pledgeBox && !this.state.amount) ? 'Pledge any amount' : ''}
 							value={this.state.amount} 
 							onChange={this.handleInputChange} 
 							onClick={this.handleInputTextClick}
 						/>
 				</div>
-				<button type="button" className={this.props.level ? (this.props.levelClicked ? "continue-button extra-info" : "hide-area continue-button extra-info") : (this.state.inputClicked ? "continue-button" : "hide-area continue-button")} onClick={this.handleContinueButtonClick}>Continue</button>
+				<button type="button" className={
+					this.state.badInput
+					? (this.props.level 
+						? "continue-button invalid-continue-button extra-info" 
+						: (this.state.inputClicked
+							? "continue-button invalid-continue-button"
+							: "hide-area continue-button")
+						)
+					: (this.props.level
+						? "continue-button valid-continue-button extra-info"
+						: (this.state.inputClicked
+							? "continue-button valid-continue-button"
+							: "hide-area continue-button")
+						)
+					}
+					onClick={this.handleContinueButtonClick}>Continue</button>
 			</div>
 		)
 	}

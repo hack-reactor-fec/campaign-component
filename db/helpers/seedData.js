@@ -86,8 +86,8 @@ for (let i = 1; i <= 1000; i++) {
 saveProjects(projects)
 .then(saveUsers(users))
 .then((result) => {
-	console.log('done');
+	return console.log('done');
 })
 .catch(err => {
-	console.log(err);
+	return console.log(err);
 })

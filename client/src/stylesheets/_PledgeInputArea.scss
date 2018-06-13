@@ -16,10 +16,34 @@ $regular-height: 42px;
 	color: rgb(255, 255, 255);
 	margin-bottom: 18px;
 	font-size: 14px;
+	transition: all 0.2s ease-in-out;
 
-	.extra-info {
-		margin-bottom: 0px;
+	&.invalid-continue-button {
+		background-color: rgb(3, 118, 99);
+		opacity: 0.2;
+
+		&.extra-info {
+			margin-bottom: 0px;
+		}
+
+		&:hover {
+			cursor: not-allowed;
+		}
 	}
+
+	&.valid-continue-button {
+
+		&.extra-info {
+			margin-bottom: 0px;
+		}
+
+		&:hover {
+			transform: translateY(-1px);
+			background-color: rgb(3, 115, 98);
+			cursor: pointer;
+		}
+	}
+
 }
 
 .pledge-amount-container {

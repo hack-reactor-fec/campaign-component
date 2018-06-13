@@ -10,6 +10,7 @@ $level-side-padding: 18px;
 	border-color: $border-general-grey;
 	border-width: $border-general-width;
 	border-style: solid;
+	position: relative;
 }
 
 #pledge-component-subcontainer {
@@ -18,6 +19,11 @@ $level-side-padding: 18px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
+	position: relative;
+}
+
+.pledge-box-header {
+	position: relative;
 }
 
 .pledge-flex-div {

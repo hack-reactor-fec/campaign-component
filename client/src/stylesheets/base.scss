@@ -22,7 +22,7 @@ select {
     background-repeat: no-repeat;
 }
 
-input:focus {
+input[type=text]:focus {
 	outline: none;
 	border-style: solid;
 	border-width: 1px;
