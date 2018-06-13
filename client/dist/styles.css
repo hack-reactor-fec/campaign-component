@@ -493,6 +493,12 @@ select {
   background-position: 100% 50%;
   background-repeat: no-repeat;
 }
+select:focus {
+  outline: none;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #009e74;
+}
 
 input[type=text]:focus {
   outline: none;
