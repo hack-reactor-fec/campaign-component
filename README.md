@@ -10,6 +10,5 @@
   - https://github.com/initial-impetus/comments-module
   - https://github.com/initial-impetus/community-module
 
-## Development
-### Campaign Service Full Demo
+## Campaign Service Full Demo
 [![Impetus Demo](https://img.youtube.com/vi/effAa7QwWYE/0.jpg)](https://www.youtube.com/watch?v=effAa7QwWYE "Impetus Demo")
