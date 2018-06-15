@@ -13,7 +13,7 @@ for (let i = 1; i <= 100; i++) {
 	tempProject['id'] = i;
 	// pick a number of levels at random between 3 and 8
 	tempLevels = [];
-	let numLevels = 3 + Math.floor(Math.random() * 8);
+	let numLevels = 5 + Math.floor(Math.random() * 4);
 	for (let j = 0; j < numLevels; j++) {
 		let tempLevel = {};
 		tempLevel['id'] = levelId++;
@@ -45,9 +45,21 @@ for (let i = 1; i <= 100; i++) {
 		}
 		tempLevels.push(tempLevel);
 	}
+	let numParagraphs = Math.floor(numLevels / 2);
+	let numPhotos = numParagraphs - 1;
+	let paragraphsArray = [];
+	for (let j = 0; j < numParagraphs; j++) {
+		paragraphsArray.push(faker.lorem.paragraphs())
+	}
+	let photosArray = [];
+	for (let j = 0; j < numPhotos; j++) {
+		let photo = 1 + Math.floor(Math.random() * 10);
+		photosArray.push(`https://s3-us-west-1.amazonaws.com/fec-kickstarter-campaign-module/images/${photo}.jpg`)
+	}
 	tempProject['numberOfBackers'] = projectNumberOfBackers;
 	tempProject['levels'] = tempLevels;
-	tempProject['aboutInfo'] = faker.lorem.paragraphs();
+	tempProject['aboutInfoText'] = paragraphsArray;
+	tempProject['aboutInfoPhotos'] = photosArray;
 	projects.push(tempProject);
 }
 

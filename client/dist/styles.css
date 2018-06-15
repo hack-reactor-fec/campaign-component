@@ -12,10 +12,14 @@
 #about-container {
   position: relative;
   width: 65%;
+  padding-right: 18px;
 }
 
-#about-info {
-  padding-right: 18px;
+.image-container {
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 24px;
+  padding-bottom: 24px;
 }
 
 .section-header {
@@ -484,6 +488,12 @@
 
 html {
   font-family: "Karla", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
 }
 
 select {

@@ -23,6 +23,8 @@ app.use(cors());
 app.get('/levels/:projectId', (req, res) => {
 	getLevels(req.params.projectId)
 	.then(results => {
+		console.log('level results', results);
+		console.log('');
 		res.writeHead(200);
 		res.end(results);
 	})
@@ -36,6 +38,8 @@ app.get('/levels/:projectId', (req, res) => {
 app.get('/about/:projectId', (req, res) => {
 	getAboutInfo(req.params.projectId)
 	.then(results => {
+		console.log('about results', results);
+		console.log('');
 		res.writeHead(200);
 		res.end(results);
 	})

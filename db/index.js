@@ -10,7 +10,8 @@ let projectSchema = new Schema({
 		unique: true
 	},
 	'levels': [{'id': Number, 'cutoffAmount': Number, 'name': String, 'description': String, 'includes': [String], 'estimatedDelivery': Date, 'shipsTo': String, 'numberOfBackers': Number, 'maxBackers': Number}],
-	'aboutInfo': String,
+	'aboutInfoText': [String],
+	'aboutInfoPhotos': [String],
 	'numberOfBackers': Number
 })
 
@@ -130,8 +131,16 @@ let getAboutInfo = (projectId) => {
 			if (err) {
 				reject(err);
 			} else {
-				let aboutInfo = project['aboutInfo'];				
-				resolve(aboutInfo);
+				console.log('aboutInfoText', project['aboutInfoText']);
+				console.log('');
+				console.log('aboutInfoPhotos', project['aboutInfoPhotos']);
+				let aboutInfoText = project['aboutInfoText'];
+				let aboutInfoPhotos = project['aboutInfoPhotos'];
+				console.log('');
+				let returnValue = [aboutInfoText, aboutInfoPhotos];
+				console.log('returnValue', returnValue);
+				console.log('');				
+				resolve(JSON.stringify(returnValue));
 			}
 		});
 	});

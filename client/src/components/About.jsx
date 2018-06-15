@@ -5,7 +5,8 @@ class About extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			aboutInfo: ''
+			aboutInfoText: [],
+			aboutInfoPhotos: []
 		}
 	}
 
@@ -14,7 +15,11 @@ class About extends Component {
 		// fetch data for the about section for this project
 		axios.get(`http://localhost:3003/about/${this.props.projectId}`)
 		.then(result => {
-			context.setState({aboutInfo: result.data});
+			let aboutInfoText = result.data[0];
+			let aboutInfoPhotos = result.data[1];
+			console.log('client side aboutInfoText', aboutInfoText);
+			console.log('client side aboutInfoPhotos', aboutInfoPhotos);
+			context.setState({aboutInfoText: aboutInfoText, aboutInfoPhotos: aboutInfoPhotos});
 		})
 		.catch(err => {
 			// console.log('ERROR', err);
@@ -26,7 +31,22 @@ class About extends Component {
 			<div id="about-master-container">
 				<div id="about-container">
 					<h1 className="section-header">About</h1>
-					<div id="about-info">{this.state.aboutInfo}</div>
+					{this.state.aboutInfoText.length > 0 &&
+						<div>
+							{this.state.aboutInfoText.map( (paragraph, index, paragraphArray) =>{
+								return (
+									<div key={'' + index}>
+										<div>{paragraph}</div>
+										{(index < paragraphArray.length - 1) && 
+											<div className="image-container">
+												<img src={this.state.aboutInfoPhotos[index]} />
+											</div>
+										}
+									</div>
+								)
+							})}
+						</div>
+					}
 				</div>
 			</div>
 		)
