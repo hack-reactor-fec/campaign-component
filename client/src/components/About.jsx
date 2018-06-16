@@ -17,8 +17,6 @@ class About extends Component {
 		.then(result => {
 			let aboutInfoText = result.data[0];
 			let aboutInfoPhotos = result.data[1];
-			console.log('client side aboutInfoText', aboutInfoText);
-			console.log('client side aboutInfoPhotos', aboutInfoPhotos);
 			context.setState({aboutInfoText: aboutInfoText, aboutInfoPhotos: aboutInfoPhotos});
 		})
 		.catch(err => {

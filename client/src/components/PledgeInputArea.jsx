@@ -16,7 +16,6 @@ class PledgeInputArea extends Component {
 
 	componentDidMount() {
 		if (this.props.level && this.props.levelClicked) {
-			console.log('textInput', this[`node${this.props.levelId}`].querySelector('input'));
 			this[`node${this.props.levelId}`].querySelector('input').focus();
 			let context = this;
 			this.setState({activeInputArea: true, amount: context.props.startingAmount, minAmount: context.props.startingAmount});
@@ -70,8 +69,6 @@ class PledgeInputArea extends Component {
 	}
 
 	handleClick = (e) => {
-		console.log('click target', e.target);
-		console.log('node', this.node);
 		if (this.props.pledgeBox) {
 			if (this.node.contains(e.target)) {
 				return;
